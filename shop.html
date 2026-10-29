@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +27,12 @@
       font-family: var(--font-body);
     }
 
-    /* Header */
+    /* Header & Aligned Navigation */
     header {
       position: sticky;
       top: 0;
-      background: rgba(252, 251, 249, 0.95);
-      backdrop-filter: blur(5px);
+      background: rgba(252, 251, 249, 0.98);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       border-bottom: 1px solid #eaeaea;
     }
@@ -41,31 +43,55 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 2rem;
+      padding: 0.8rem 2rem;
+      height: 80px;
     }
 
     .brand-logo {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
       text-decoration: none;
       color: var(--primary-color);
+      height: 100%;
+    }
+
+    .brand-logo img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .brand-logo:hover img {
+      transform: scale(1.05);
+    }
+
+    .brand-logo .brand-text {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       font-weight: 700;
+      line-height: 1;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
       gap: 2.5rem;
+      align-items: center;
+      height: 100%;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--primary-color);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
+      font-weight: 500;
     }
 
     .nav-links a:hover, .nav-links a.active {
@@ -156,14 +182,35 @@
       color: #999999;
       letter-spacing: 1px;
     }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0.8rem 1rem;
+      }
+      .brand-logo img {
+        height: 42px;
+      }
+      .brand-logo .brand-text {
+        font-size: 1.2rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .nav-links a {
+        font-size: 0.75rem;
+      }
+    }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header>
     <div class="nav-container">
-      <a href="index.html" class="brand-logo">Velora</a>
+      <a href="index.html" class="brand-logo">
+        <img src="v2.png" alt="Velora Fashion Emblem">
+        <span class="brand-text">Velora</span>
+      </a>
       <nav>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
@@ -189,27 +236,27 @@
       <div class="product-card" data-category="dresses">
         <img class="product-image" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=600" alt="Silk Midi Dress">
         <h3 class="product-title">Silk Evening Gown</h3>
-        <p class="product-price">$480.00</p>
+        <p class="product-price">\$480.00</p>
       </div>
       <div class="product-card" data-category="suits">
         <img class="product-image" src="https://images.unsplash.com/photo-1548624149-f1e1f2f012b1?q=80&w=600" alt="Wool Blazer">
         <h3 class="product-title">Tailored Wool Blazer</h3>
-        <p class="product-price">$350.00</p>
+        <p class="product-price">\$350.00</p>
       </div>
       <div class="product-card" data-category="knitwear">
         <img class="product-image" src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=600" alt="Cashmere Sweater">
         <h3 class="product-title">Cashmere Rollneck Sweater</h3>
-        <p class="product-price">$290.00</p>
+        <p class="product-price">\$290.00</p>
       </div>
       <div class="product-card" data-category="dresses">
         <img class="product-image" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600" alt="Cocktail Dress">
         <h3 class="product-title">Satin Cocktail Dress</h3>
-        <p class="product-price">$420.00</p>
+        <p class="product-price">\$420.00</p>
       </div>
       <div class="product-card" data-category="suits">
         <img class="product-image" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" alt="Wide-Leg Trousers">
         <h3 class="product-title">High-Waisted Trousers</h3>
-        <p class="product-price">$210.00</p>
+        <p class="product-price">\$210.00</p>
       </div>
     </div>
   </main>
