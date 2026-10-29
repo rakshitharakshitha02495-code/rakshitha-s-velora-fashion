@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Velora Fashion</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --primary-color: #1a1a1a;
+      --accent-color: #c5a059;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+      font-family: var(--font-body);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(252, 251, 249, 0.95);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-color);
+    }
+
+    /* Form Container */
+    .contact-container {
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .contact-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #cccccc;
+      background-color: transparent;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary-color);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--accent-color);
+    }
+
+    .form-status {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      display: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 5rem;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: #999999;
+      letter-spacing: 1px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">Velora</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-container">
+    <h1 class="contact-title">Client Relations</h1>
+    <p class="contact-subtitle">Have a question regarding fit, orders, or custom styling? Send us a message.</p>
+
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Inquiry</button>
+    </form>
+    <div class="form-status" id="formStatus">Thank you. Your message has been received.</div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> VELORA FASHION. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        status.style.display = 'block';
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>
