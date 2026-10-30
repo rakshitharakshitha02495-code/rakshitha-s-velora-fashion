@@ -1,169 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Velora Fashion</title>
-  <style>
-    :root {
-      --bg-color: #fcfbf9;
-      --primary-color: #1a1a1a;
-      --accent-color: #c5a059;
-      --font-heading: 'Playfair Display', Georgia, serif;
-      --font-body: 'Montserrat', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Velora Fashion</title>
+<meta name="description" content="The story behind Velora Fashion.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<header class="site-header always-solid">
+  <nav class="nav">
+    <a href="index.html" class="logo"><img src="v2.png" alt="" onerror="this.style.display='none'">Velora</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--primary-color);
-      font-family: var(--font-body);
-      line-height: 1.8;
-    }
+<main>
+  <div class="page-banner">
+    <h1>Our Story</h1>
+    <p>Where elegance meets intention</p>
+  </div>
 
-    /* Header & Aligned Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(252, 251, 249, 0.98);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      border-bottom: 1px solid #eaeaea;
-    }
+  <section>
+    <div class="container split">
+      <div class="split-img reveal"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=1000" alt="Velora atelier"></div>
+      <div class="split-text reveal d1">
+        <span class="eyebrow" style="color:var(--gold-dark)">Who We Are</span>
+        <h2>Fashion made to last beyond a season</h2>
+        <p>Velora was born from a simple belief: every woman deserves clothing that makes her feel confident, graceful and completely herself.</p>
+        <p>We design womenswear that blends timeless silhouettes with modern comfort. From elegant evening gowns to sharply tailored suits and soft everyday luxuries, each piece is made with care and attention to detail.</p>
+        <a href="shop.html" class="btn btn-solid">Shop the Collection</a>
+      </div>
+    </div>
+  </section>
 
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-      height: 80px;
-    }
+  <section class="band">
+    <div class="container">
+      <div class="section-head reveal"><h2>What We Stand For</h2><div class="divider"></div></div>
+      <div class="values">
+        <div class="value reveal"><div class="icon">I</div><h3>Craftsmanship</h3><p>Every seam and stitch is considered, so each garment feels as good as it looks.</p></div>
+        <div class="value reveal d1"><div class="icon">II</div><h3>Timelessness</h3><p>We design pieces that stay beautiful year after year, never chasing fleeting trends.</p></div>
+        <div class="value reveal d2"><div class="icon">III</div><h3>Confidence</h3><p>Clothing should empower. Velora is made for women who lead, create and shine.</p></div>
+      </div>
+    </div>
+  </section>
 
-    .brand-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--primary-color);
-      height: 100%;
-    }
+  <section class="dark">
+    <div class="container quote reveal">
+      <blockquote>“Elegance is not about being noticed. It is about being remembered.”</blockquote>
+      <cite>Velora</cite>
+    </div>
+  </section>
+</main>
 
-    .brand-logo img {
-      height: 52px;
-      width: auto;
-      object-fit: contain;
-      border-radius: 50%;
-      transition: transform 0.3s ease;
-    }
-
-    .brand-logo:hover img {
-      transform: scale(1.05);
-    }
-
-    .brand-logo .brand-text {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2.5rem;
-      align-items: center;
-      height: 100%;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--primary-color);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--accent-color);
-    }
-
-    /* About Section */
-    .about-container {
-      max-width: 1000px;
-      margin: 4rem auto;
-      padding: 0 2rem;
-    }
-
-    .about-title {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-text p {
-      margin-bottom: 1.5rem;
-      color: #444;
-      font-weight: 300;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--primary-color);
-      color: #ffffff;
-      text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 5rem;
-    }
-
-    footer p {
-      font-size: 0.85rem;
-      color: #999999;
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 768px) {
-      .nav-container {
-        padding: 0.8rem 1rem;
-      }
-      .brand-logo img {
-        height: 42px;
-      }
-      .brand-logo .brand-text {
-        font-size: 1.2rem;
-      }
-      .nav-links {
-        gap: 1.2rem;
-      }
-      .nav-links a {
-        font-size: 0.75rem;
-      }
-      .about-content {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  <link href="
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo">Velora</a><p>Timeless luxury womenswear for the modern woman.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Collections</h4><ul><li><a href="shop.html">Evening Wear</a></li><li><a href="shop.html">Tailored Suits</a></li><li><a href="shop.html">Casual Luxury</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>hello@velora.com</li><li>+91 00000 00000</li><li>Bengaluru, India</li></ul></div>
+    </div>
+    <p class="copy">© Velora Fashion. All rights reserved.</p>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
