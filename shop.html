@@ -33,44 +33,10 @@
       <div class="filters">
         <button class="filter active" data-filter="all">All</button>
         <button class="filter" data-filter="evening">Evening Wear</button>
-        <button class="filter" data-filter="suits">Tailored Suits</button>
-        <button class="filter" data-filter="casual">Casual Luxury</button>
+        <button class="filter" data-filter="cocktail">Cocktail</button>
+        <button class="filter" data-filter="day">Day Dresses</button>
       </div>
-
-      <div class="product-grid">
-        <article class="product" data-cat="evening">
-          <div class="product-img"><span class="tag">New</span><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800" alt="Midnight Silk Gown"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Evening Wear</span><h3>Midnight Silk Gown</h3><p class="price">₹18,500</p>
-        </article>
-        <article class="product" data-cat="suits">
-          <div class="product-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800" alt="Ivory Tailored Blazer"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Tailored Suits</span><h3>Ivory Tailored Blazer</h3><p class="price">₹14,200</p>
-        </article>
-        <article class="product" data-cat="casual">
-          <div class="product-img"><span class="tag">Bestseller</span><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=800" alt="Cashmere Knit Sweater"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Casual Luxury</span><h3>Cashmere Knit Sweater</h3><p class="price">₹9,800</p>
-        </article>
-        <article class="product" data-cat="evening">
-          <div class="product-img"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800" style="object-position:top" alt="Rouge Cocktail Dress"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Evening Wear</span><h3>Rouge Cocktail Dress</h3><p class="price">₹12,900</p>
-        </article>
-        <article class="product" data-cat="suits">
-          <div class="product-img"><span class="tag">New</span><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800" style="object-position:top" alt="Charcoal Power Suit"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Tailored Suits</span><h3>Charcoal Power Suit</h3><p class="price">₹21,000</p>
-        </article>
-        <article class="product" data-cat="casual">
-          <div class="product-img"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=800" style="object-position:bottom" alt="Everyday Silk Blouse"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Casual Luxury</span><h3>Everyday Silk Blouse</h3><p class="price">₹6,400</p>
-        </article>
-        <article class="product" data-cat="evening">
-          <div class="product-img"><span class="tag">Limited</span><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800" style="object-position:bottom" alt="Pearl Evening Gown"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Evening Wear</span><h3>Pearl Evening Gown</h3><p class="price">₹24,500</p>
-        </article>
-        <article class="product" data-cat="casual">
-          <div class="product-img"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=800" style="object-position:top" alt="Soft Wool Cardigan"><button class="quick">Add to Wishlist</button></div>
-          <span class="cat">Casual Luxury</span><h3>Soft Wool Cardigan</h3><p class="price">₹8,200</p>
-        </article>
-      </div>
+      <div class="product-grid" id="grid"></div>
     </div>
   </section>
 </main>
@@ -86,6 +52,39 @@
     <p class="copy">© Velora Fashion. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+/*
+  HOW TO ADD MORE DRESSES
+  Copy one line in the list below, then change the name, price, tag and photo link.
+  "cat" must be: evening, cocktail or day
+*/
+const U = id => "https://images.unsplash.com/photo-" + id + "?q=80&w=800&auto=format&fit=crop";
+const fallbackImg = U("1539109136881-3be0616acf4b");
+
+const products = [
+  { cat: "evening",  name: "Scarlet Evening Dress", price: "₹18,500", tag: "New",        img: U("1721182420935-29bfb69dd26c") },
+  { cat: "evening",  name: "Crimson Statement Gown", price: "₹22,900", tag: "Bestseller", img: U("1721182421063-19a6c711b719") },
+  { cat: "evening",  name: "Midnight Occasion Dress", price: "₹24,500", tag: "Limited",   img: U("1657979768954-3422b8c4affa") },
+  { cat: "evening",  name: "Midnight Silk Gown",     price: "₹19,800", tag: "",           img: U("1539109136881-3be0616acf4b") },
+  { cat: "cocktail", name: "Ivory Mini Dress",       price: "₹12,900", tag: "New",        img: U("1726673602754-fdd3a8d2e069") },
+  { cat: "day",      name: "Linen White Sleeveless Dress", price: "₹7,600", tag: "",       img: U("1571924848943-25c2c95bbb4b") }
+];
+
+const labels = { evening: "Evening Wear", cocktail: "Cocktail", day: "Day Dresses" };
+
+document.getElementById("grid").innerHTML = products.map(p => `
+  <article class="product" data-cat="${p.cat}">
+    <div class="product-img">
+      ${p.tag ? `<span class="tag">${p.tag}</span>` : ""}
+      <img src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.src='${fallbackImg}'">
+      <button class="quick">Add to Wishlist</button>
+    </div>
+    <span class="cat">${labels[p.cat]}</span>
+    <h3>${p.name}</h3>
+    <p class="price">${p.price}</p>
+  </article>`).join("");
+</script>
 <script src="script.js"></script>
 </body>
 </html>
